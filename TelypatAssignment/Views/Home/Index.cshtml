@@ -13,12 +13,12 @@
 }
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Sahar Alhabsi <a href="https://saharalhabsi.github.io/sa7ar/">Profile</a>.</p>
 </div>
 <br />
 <div class="card">
     <div class="card-body">
-        Students Avrage Age :26 years Old
+        Students Avrage Age :26  Years Old
     </div>
 </div>
 <h1>Students Table</h1>
@@ -32,6 +32,7 @@
                     <th>Class</th>
                     <th>Country</th>
                     <th>Birthday Date</th>
+                    <th>Age</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,14 +41,14 @@
 
 
                     {
-                        <tr>
-                            <td>@student.Id</td>
-                            <td>@student.name</td>
-                            <td>@student.classes</td>
-                            <td>@student.country</td>
-                            <td>@student.birthDate</td>
-
-                        </tr>
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.name</td>
+                    <td>@student.classes</td>
+                    <td>@student.country</td>
+                    <td>@student.birthDate</td>
+                    <td>age</td>
+                </tr>
                     }
             
             </tbody>
@@ -62,7 +63,7 @@
                 <tr>
                     <th>#</th>
                     <th>Class Name</th>
-                    <th>Total</th>
+                    <th>Count</th>
                 </tr>
             </thead>
             <tbody>
