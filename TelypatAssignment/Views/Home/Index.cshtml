@@ -1,0 +1,116 @@
+﻿@using TelypayAssignment.Models
+
+@{
+    ViewData["Title"] = "Students Page";
+}
+@{
+
+    IEnumerable<Students> students = ViewData["Students"] as IEnumerable<Students>;
+    IEnumerable<Classes> classses = ViewData["Classes"] as IEnumerable<Classes>;
+    IEnumerable<Countries> country = ViewData["Countries"] as IEnumerable<Countries>;
+
+
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<br />
+<div class="card">
+    <div class="card-body">
+        Students Avrage Age :26 years Old
+    </div>
+</div>
+<h1>Students Table</h1>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Country</th>
+                    <th>Birthday Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                    @foreach (Students student in students)
+
+
+                    {
+                        <tr>
+                            <td>@student.Id</td>
+                            <td>@student.name</td>
+                            <td>@student.classes</td>
+                            <td>@student.country</td>
+                            <td>@student.birthDate</td>
+
+                        </tr>
+                    }
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+<h1>Classes Table</h1>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Class Name</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (classses != null)
+                {
+                    @foreach (Classes clas in classses)
+                    {
+                        <tr>
+                            <td>@clas.Id</td>
+                            <td>@clas.name</td>
+                            <td>@clas.total</td>
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <h1>Countries Table</h1>
+
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Country Name</th>
+                        <th>Number of Students </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (country != null)
+                    {
+                        @foreach (Countries countries in country)
+                        {
+                            <tr>
+                                <td>@countries.Id</td>
+                                <td>@countries.name</td>
+                                <td>@countries.total</td>
+
+
+                            </tr>
+                        }
+                    }
+                    </tbody>
+            </table>
+        </div>
+    </div>
+ 
