@@ -18,7 +18,22 @@
 <br />
 <div class="card">
     <div class="card-body">
-        Students Avrage Age :26  Years Old
+
+        Students Avrage Age:
+        @{  List<int> elements = new List<int>();
+
+            foreach (Students student in students)
+                elements.Add(student.Age);
+            var len = elements.Count;
+            var sum = 0;
+            for (int i = 0; i < len; i++)
+            {
+                sum += elements[i];
+            }
+            var avg = sum / len;
+           
+         }
+            @avg Years Old
     </div>
 </div>
 <h1>Students Table</h1>
@@ -47,7 +62,7 @@
                     <td>@student.classes</td>
                     <td>@student.country</td>
                     <td>@student.birthDate</td>
-                    <td>age</td>
+                    <td> @Html.DisplayFor(modelItem => student.Age)</td>
                 </tr>
                     }
             

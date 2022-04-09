@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -28,14 +29,41 @@ namespace TelypatAssignment.Controllers
             ViewData["Students"] = _context.Students.ToList();
             ViewData["Classes"] = _context.Classes.ToList();
             ViewData["Countries"] = _context.Countries.ToList();
-            
-
+         
+       
+           
             return View();
 
 
         }
+        public IActionResult GetAvgAge()
+        {
+            using (var connection = new SqliteConnection("Data Source=studentsDB.db"))
+            {
+                connection.Open();
 
-        public IActionResult Privacy()
+                var command = connection.CreateCommand();
+                command.CommandText =
+                      @"
+        
+                    SELECT birthDate,
+                    strftime('%Y',date('now'))-strftime('%Y',date(birthDate))As 'age'
+                    FROM students
+                        ";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var name = reader.GetString(0);
+
+                        Console.WriteLine($"Hello, {name}!");
+                    }
+                }
+            }
+            return View();
+        }
+
+            public IActionResult Privacy()
         {
             return View();
         }
