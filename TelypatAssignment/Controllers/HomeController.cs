@@ -30,14 +30,7 @@ namespace TelypatAssignment.Controllers
             ViewData["Students"] = _context.Students.ToList();
             ViewData["Classes"] = _context.Classes.ToList();
             ViewData["Countries"] = _context.Countries.ToList();
-            var classes = _context.Classes.Include(c => c.Students);
-            foreach(Classes c in classes)
-            {
-                foreach (Students s in c.Students)
-                {
-                    
-                }
-            }
+           
             return View();
 
 
