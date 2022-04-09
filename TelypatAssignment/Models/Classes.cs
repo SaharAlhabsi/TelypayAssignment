@@ -11,6 +11,8 @@ namespace TelypayAssignment.Models
         public int Id { get; set; }
         public string name { get; set; }
         public string total { get; set; }
-      
+        public List<Students> Students { get; set; }
+        public int count { get; set; }
+
     }
 }

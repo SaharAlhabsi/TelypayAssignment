@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -29,13 +30,33 @@ namespace TelypatAssignment.Controllers
             ViewData["Students"] = _context.Students.ToList();
             ViewData["Classes"] = _context.Classes.ToList();
             ViewData["Countries"] = _context.Countries.ToList();
-         
-       
-           
+
             return View();
 
 
         }
+                public List<Countries> ShowCountryStats()
+                {
+                    return _context.Students.Include("countries")
+                      .GroupBy(e => e.countries.name)
+                      .Select(y => new Countries
+                         {
+                        
+                             count = y.Count()
+                         }).ToList();
+
+                }
+                public List<Classes> ShowClassStats()
+                {
+                    return _context.Students.Include("classes")
+             .GroupBy(e => e.classses.name)
+             .Select(y => new Classes
+             {
+               
+                 count = y.Count()
+             }).ToList();
+
+                }
         public IActionResult GetAvgAge()
         {
             using (var connection = new SqliteConnection("Data Source=studentsDB.db"))

@@ -1,4 +1,5 @@
 ﻿@using TelypayAssignment.Models
+@using Microsoft.EntityFrameworkCore;
 
 @{
     ViewData["Title"] = "Students Page";
@@ -20,7 +21,7 @@
     <div class="card-body">
 
         Students Avrage Age:
-        @{  List<int> elements = new List<int>();
+        @{ List<int> elements = new List<int>();
 
             foreach (Students student in students)
                 elements.Add(student.Age);
@@ -31,9 +32,9 @@
                 sum += elements[i];
             }
             var avg = sum / len;
-           
-         }
-            @avg Years Old
+
+        }
+        @avg Years Old
     </div>
 </div>
 <h1>Students Table</h1>
@@ -51,21 +52,21 @@
                 </tr>
             </thead>
             <tbody>
-            
-                    @foreach (Students student in students)
+
+                @foreach (Students student in students)
 
 
-                    {
-                <tr>
-                    <td>@student.Id</td>
-                    <td>@student.name</td>
-                    <td>@student.classes</td>
-                    <td>@student.country</td>
-                    <td>@student.birthDate</td>
-                    <td> @Html.DisplayFor(modelItem => student.Age)</td>
-                </tr>
-                    }
-            
+                {
+                    <tr>
+                        <td>@student.Id</td>
+                        <td>@student.name</td>
+                        <td>@student.classes</td>
+                        <td>@student.country</td>
+                        <td>@student.birthDate</td>
+                        <td> @Html.DisplayFor(modelItem => student.Age)</td>
+                    </tr>
+                }
+
             </tbody>
         </table>
     </div>
@@ -89,7 +90,7 @@
                         <tr>
                             <td>@clas.Id</td>
                             <td>@clas.name</td>
-                            <td>@clas.total</td>
+                            <td>@clas.count</td>
 
                         </tr>
                     }
@@ -97,36 +98,38 @@
             </tbody>
         </table>
     </div>
-    </div>
-    <h1>Countries Table</h1>
+</div>
+<h1>Countries Table</h1>
 
-    <div class="row">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Country Name</th>
-                        <th>Number of Students </th>
+<div class="row">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Country Name</th>
+                    <th>Number of Students </th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (country != null)
+                </tr>
+            </thead>
+            <tbody>
+                @{
+
+                }
+                @if (country != null)
+                {
+                    @foreach (Countries countries in country)
                     {
-                        @foreach (Countries countries in country)
-                        {
-                            <tr>
-                                <td>@countries.Id</td>
-                                <td>@countries.name</td>
-                                <td>@countries.total</td>
+                        <tr>
+                            <td>@countries.Id</td>
+                            <td>@countries.name</td>
+                            <td>@countries.total</td>
 
 
-                            </tr>
-                        }
+                        </tr>
                     }
-                    </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
- 
+</div>
