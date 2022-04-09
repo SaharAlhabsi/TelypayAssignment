@@ -63,7 +63,7 @@
                         <td>@student.classes</td>
                         <td>@student.country</td>
                         <td>@student.birthDate</td>
-                        <td> @Html.DisplayFor(modelItem => student.Age)</td>
+                        <td>@Html.DisplayFor(modelItem => student.Age)</td>
                     </tr>
                 }
 
@@ -80,6 +80,7 @@
                     <th>#</th>
                     <th>Class Name</th>
                     <th>Count</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -87,12 +88,11 @@
                 {
                     @foreach (Classes clas in classses)
                     {
-                        <tr>
-                            <td>@clas.Id</td>
-                            <td>@clas.name</td>
-                            <td>@clas.count</td>
-
-                        </tr>
+                <tr>
+                    <td>@clas.Id</td>
+                    <td>@clas.name</td>
+                    <td>@Html.DisplayFor(m => clas.Students.Count)</td>
+                </tr>
                     }
                 }
             </tbody>
@@ -120,13 +120,13 @@
                 {
                     @foreach (Countries countries in country)
                     {
-                        <tr>
-                            <td>@countries.Id</td>
-                            <td>@countries.name</td>
-                            <td>@countries.total</td>
+                <tr>
+                    <td>@countries.Id</td>
+                    <td>@countries.name</td>
+                    <td>@Html.DisplayFor(m => countries.Students.Count)</td>
 
 
-                        </tr>
+                </tr>
                     }
                 }
             </tbody>

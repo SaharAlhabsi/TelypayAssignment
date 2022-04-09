@@ -11,6 +11,8 @@ namespace TelypayAssignment.Models
         public string country { get; set; }
         public int birthDate { get; set; }
         public int Age { get { return DateTime.Now.Year - birthDate; } }
+        public int CountryID { get; set; }
+        public int ClassID { get; set; }
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("ClassID")]
         public Classes classses { get; set; }
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("CountryID")]
