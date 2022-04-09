@@ -11,18 +11,7 @@ namespace TelypayAssignment.Models
         public string country { get; set; }
         public int birthDate { get; set; }
         public int Age { get { return DateTime.Now.Year - birthDate; } }
-        public int GetAvgAge { get { return( DateTime.Now.Year - birthDate)/2; } }
-        public int calculateAverage(int[] age)
-        {   
-            var len = age.Length;
-            var sum = 0;
-            for (int i = 0; i < len; i++)
-            {
-                sum += age[i];
-            }
-            var avg = sum / len;
-            return avg;
-        }
+        
 
     }
 }
